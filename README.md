@@ -10,4 +10,5 @@ This is an intro tutorial that will cover the basic concepts and guide you throu
 
 You can play the game in the browser, and see how it works in action.
 
-![Watch the video](https://github.com/a-y-a-n-das/kaboom-game/blob/main/learn/gameplay%20(1).mp4)
+https://github.com/user-attachments/assets/68021757-3418-4ed7-81c7-eb03654cd979
+
