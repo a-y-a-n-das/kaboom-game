@@ -18,7 +18,7 @@ loadSound("gameover", "sounds/over.mp3");
 loadSound("blast", "sounds/blast.mp3");
 //variables
 let SPEED = 620
-let BSPEED = 2
+let BSPEED = 1
 
 const player = add([
   sprite("bean"),  // renders as a sprite
@@ -42,10 +42,10 @@ onKeyDown("down", () => {
   player.move(0, SPEED)
 })
 
-setInterval(() => {
+let bombSpawn = setInterval(() => {
   for (let i = 0; i < 4; i++) {
     let x = rand(0, width())
-    let y = height()
+    let y = 0
     let c = add([
       sprite("bomb"),  // renders as a sprite
       pos(x, y),    // position in world
@@ -53,7 +53,7 @@ setInterval(() => {
       scale(0.05),
       "bomb"])
     c.onUpdate(() => {
-      c.moveTo(c.pos.x, c.pos.y - BSPEED)
+      c.moveTo(c.pos.x, c.pos.y + BSPEED)
     })
     if (BSPEED < 13)
       BSPEED += 1
@@ -67,6 +67,7 @@ let score
 player.onCollide("bomb", () => {
   play("blast")
   destroy(player)
+  clearInterval(bombSpawn)
   destroyAll
   addKaboom(player.pos)
   obj.wait(1, () => {
@@ -78,6 +79,6 @@ player.onCollide("bomb", () => {
     scale(3),
     color(10, 10, 255)
   ])
-  
+
 })
 
